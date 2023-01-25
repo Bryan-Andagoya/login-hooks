@@ -1,10 +1,18 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export const HomeScreen = () => {
+import { StackNavigatorParamList } from "../navigation";
+
+interface Props
+  extends NativeStackScreenProps<StackNavigatorParamList, "Home"> {}
+
+export const HomeScreen = ({ route }: Props) => {
+  const { email } = route.params;
+
   return (
     <View style={styles.container}>
-      <Text>HomeScreen</Text>
+      <Text style={styles.text}>Hello {email}</Text>
     </View>
   );
 };
@@ -15,5 +23,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
+  },
+  text: {
+    fontSize: 24,
+    textAlign: "center",
+    fontWeight: "bold",
   },
 });

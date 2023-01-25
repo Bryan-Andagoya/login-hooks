@@ -1,1 +1,1 @@
-export { StackNavigator } from "./StackNavigator";
+export { StackNavigator, StackNavigatorParamList } from "./StackNavigator";

@@ -2,7 +2,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { HomeScreen, LoginScreen, RegisterScreen } from "../screens";
 
-const Stack = createNativeStackNavigator();
+export type StackNavigatorParamList = {
+  Login: undefined;
+  Register: undefined;
+  Home: {
+    email: string;
+  };
+};
+
+const Stack = createNativeStackNavigator<StackNavigatorParamList>();
 
 export const StackNavigator = () => {
   return (
@@ -12,7 +20,11 @@ export const StackNavigator = () => {
         component={LoginScreen}
         options={{ title: "Login to your account" }}
       />
-      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{ title: "Create an account" }}
+      />
       <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>
   );
